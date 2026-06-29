@@ -6,6 +6,8 @@ import DietDashboard from './components/DietDashboard';
 import ProgressTracker from './components/ProgressTracker';
 import './App.css';
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+
 export default function App() {
   const [view, setView] = useState('auth'); // 'auth' | 'landing' | 'assessment' | 'dashboard' | 'progress'
   const [user, setUser] = useState(null);
@@ -31,7 +33,7 @@ export default function App() {
 
   const fetchUserAssessment = async (currentUser) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/auth/login`, {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: currentUser.username, password: "" }) // backend will find user by username, but password check bypassed or handled
@@ -39,7 +41,7 @@ export default function App() {
       
       // We can also query GET /api/assessment/user/{userId} if needed, but our user login response automatically sends the assessment if it exists.
       // Let's call the specific GET endpoint
-      const getRes = await fetch(`http://localhost:8080/api/assessment/${currentUser.id}`);
+      const getRes = await fetch(`${BASE_URL}/api/assessment/${currentUser.id}`);
       // Wait, the assessment ID in Mongo is generated, but UserController.login response automatically aggregates it.
       // So let's write a direct check endpoint or call it
     } catch (e) {
@@ -72,7 +74,7 @@ export default function App() {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/assessment', {
+      const response = await fetch(`${BASE_URL}/api/assessment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
