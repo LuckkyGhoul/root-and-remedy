@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Heart, Shield, Lock, Mail, User, Sparkles, Loader2 } from 'lucide-react';
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+
 export default function AuthPage({ onAuthSuccess }) {
   const [isLogin, setIsLogin] = useState(true);
   const [username, setUsername] = useState('');
@@ -33,8 +35,8 @@ export default function AuthPage({ onAuthSuccess }) {
     setLoading(true);
 
     const url = isLogin 
-      ? 'http://localhost:8080/api/auth/login' 
-      : 'http://localhost:8080/api/auth/signup';
+      ? `${BASE_URL}/api/auth/login` 
+      : `${BASE_URL}/api/auth/signup`;
 
     const payload = isLogin 
       ? { username, password } 
