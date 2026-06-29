@@ -11,6 +11,8 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+
 export default function ProgressTracker({ assessment, user, onBack }) {
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,7 +30,7 @@ export default function ProgressTracker({ assessment, user, onBack }) {
   // Load historical logs from Spring Boot on component mount
   const fetchLogs = async () => {
     try {
-      const res = await fetch(`http://localhost:8080/api/logs/${assessment.id}`);
+      const res = await fetch(`${BASE_URL}/api/logs/${assessment.id}`);
       if (res.ok) {
         const data = await res.json();
         if (data && data.length > 0) {
@@ -78,7 +80,7 @@ export default function ProgressTracker({ assessment, user, onBack }) {
     };
 
     try {
-      const response = await fetch('http://localhost:8080/api/logs', {
+      const response = await fetch(`${BASE_URL}/api/logs`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -116,7 +118,7 @@ export default function ProgressTracker({ assessment, user, onBack }) {
     setAdaptedDietAlert(null);
 
     try {
-      const response = await fetch(`http://localhost:8080/api/optimize/${assessment.id}`, {
+      const response = await fetch(`${BASE_URL}/api/optimize/${assessment.id}`, {
         method: 'POST'
       });
       if (response.ok) {
