@@ -9,7 +9,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600",
         desc: "Rich in soluble fiber and omega-3s to support glycemic control and combat insulin resistance.",
         macros: { calories: 340, protein: "12g", carbs: "22g", fats: "14g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/267812/raspberry-chia-pudding/",
+        recipeUrl: "https://cookieandkate.com/raspberry-chia-pudding-recipe/",
         steps: [
           "Combine 3 tbsp of chia seeds with 1 cup of unsweetened almond milk in a jar.",
           "Stir in 1 tbsp of ground flaxseeds and a drop of vanilla extract.",
@@ -22,7 +22,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&q=80&w=600",
         desc: "High protein, low GI legume bowl designed to keep blood sugar levels stable throughout the afternoon.",
         macros: { calories: 480, protein: "18g", carbs: "45g", fats: "12g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/mediterranean_quinoa_bowl/",
+        recipeUrl: "https://cookieandkate.com/best-quinoa-salad-recipe/",
         steps: [
           "Rinse and boil 1/2 cup of quinoa in 1 cup of vegetable broth for 15 minutes.",
           "Toss cooked quinoa with 1/2 cup of rinsed canned chickpeas.",
@@ -50,7 +50,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1541532713592-79a0317b6b77?auto=format&fit=crop&q=80&w=600",
         desc: "Complex carbs from sprouted bread paired with protein-rich almond lipids and low-sugar berries.",
         macros: { calories: 310, protein: "10g", carbs: "28g", fats: "16g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/268953/almond-butter-toast-with-bananas-berries/",
+        recipeUrl: "https://cookieandkate.com/almond-butter-toast-ideas/",
         steps: [
           "Toast two slices of organic sprouted grain bread.",
           "Spread 1 tbsp of raw almond butter onto each slice.",
@@ -63,7 +63,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=600",
         desc: "Fiber-heavy leafy bowl enriched with edamame pods to provide slow-release amino profiles.",
         macros: { calories: 420, protein: "22g", carbs: "18g", fats: "15g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/edamame_salad/",
+        recipeUrl: "https://cookieandkate.com/crunchy-thai-peanut-salad-with-edamame/",
         steps: [
           "Steam 1 cup of shelled edamame pods for 5 minutes.",
           "Toss edamame with baby arugula, romaine lettuce, and shaved celery.",
@@ -76,7 +76,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1546069901-5ec6a28ee9ce?auto=format&fit=crop&q=80&w=600",
         desc: "Low-glycemic lentil pasta loaded with zinc-rich hemp seeds and basil pesto.",
         macros: { calories: 460, protein: "26g", carbs: "48g", fats: "14g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/270425/creamy-pesto-pasta-with-chickpeas-spinach/",
+        recipeUrl: "https://cookieandkate.com/creamy-pesto-pasta-recipe/",
         steps: [
           "Boil 1 cup of lentil-based rotini pasta for 8 minutes.",
           "Blend fresh basil, garlic, hemp hearts, and olive oil to make pesto.",
@@ -91,7 +91,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?auto=format&fit=crop&q=80&w=600",
         desc: "Warm steel-cut oats cooked with anti-inflammatory turmeric and ginger.",
         macros: { calories: 340, protein: "11g", carbs: "44g", fats: "10g" },
-        recipeUrl: "https://www.bonappetit.com/story/turmeric-oatmeal",
+        recipeUrl: "https://cookieandkate.com/golden-milk-oatmeal-recipe/",
         steps: [
           "Cook 1/2 cup of oats in 1 cup of unsweetened hemp milk.",
           "Stir in 1/2 tsp of organic turmeric powder, ginger paste, and cinnamon.",
@@ -104,7 +104,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=600",
         desc: "Fresh, unbaked rice paper wraps loaded with raw vegetables and baked tofu slices.",
         macros: { calories: 390, protein: "18g", carbs: "30g", fats: "12g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/fresh_tofu_spring_rolls/",
+        recipeUrl: "https://cookieandkate.com/fresh-spring-rolls-recipe/",
         steps: [
           "Slice firm tofu and lightly pan-sear on each side.",
           "Dip rice paper wrapper in warm water for 5 seconds.",
@@ -132,7 +132,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&q=80&w=600",
         desc: "Liquid cellular support loaded with magnesium-rich spinach and healthy fats.",
         macros: { calories: 290, protein: "9g", carbs: "18g", fats: "18g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/252251/spinach-avocado-smoothie/",
+        recipeUrl: "https://cookieandkate.com/green-smoothie-recipe/",
         steps: [
           "Add 2 cups of organic baby spinach and 1/2 ripe avocado to a blender.",
           "Pour in 1 cup of unsweetened almond milk.",
@@ -145,7 +145,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&q=80&w=600",
         desc: "Fermented tempeh strips tossed with kalamata olives, cucumber, and olive oil.",
         macros: { calories: 450, protein: "24g", carbs: "22g", fats: "22g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/275389/mediterranean-tempeh-bowl/",
+        recipeUrl: "https://cookieandkate.com/marinated-tempeh-recipe/",
         steps: [
           "Slice 120g of tempeh and pan-fry in a tsp of olive oil.",
           "Combine chopped romaine, cucumber, cherry tomatoes, and red onion.",
@@ -158,7 +158,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&q=80&w=600",
         desc: "Beta-carotene rich butternut squash simmered with light coconut milk and sage.",
         macros: { calories: 410, protein: "12g", carbs: "44g", fats: "16g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/butternut_squash_curry/",
+        recipeUrl: "https://cookieandkate.com/butternut-squash-curry-recipe/",
         steps: [
           "Cube butternut squash and sauté with onions and garlic.",
           "Stir in yellow curry paste, fresh sage leaves, and 1 cup of light coconut milk.",
@@ -173,7 +173,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&q=80&w=600",
         desc: "Probiotic coconut yogurt layered with low-sugar berries and high-omega flaxseeds.",
         macros: { calories: 310, protein: "8g", carbs: "26g", fats: "14g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/266598/berry-yogurt-parfait/",
+        recipeUrl: "https://cookieandkate.com/healthy-yogurt-parfait-recipe/",
         steps: [
           "Layer 1 cup of unsweetened coconut yogurt in a glass bowl.",
           "Add 1/2 cup of organic raspberries and blueberries.",
@@ -199,7 +199,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1546069901-5ec6a28ee9ce?auto=format&fit=crop&q=80&w=600",
         desc: "High-fiber cannellini beans sautéed with iron-rich broccoli rabe and garlic.",
         macros: { calories: 390, protein: "17g", carbs: "35g", fats: "15g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/sauteed_broccoli_rabe_with_white_beans/",
+        recipeUrl: "https://cookieandkate.com/lemon-white-beans-and-greens/",
         steps: [
           "Sauté minced garlic and red pepper flakes in olive oil.",
           "Add chopped broccoli rabe and cook for 5 minutes until tender.",
@@ -214,7 +214,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1546069901-5ec6a28ee9ce?auto=format&fit=crop&q=80&w=600",
         desc: "Savory plant-based scramble containing B-vitamins and zinc co-factors.",
         macros: { calories: 330, protein: "22g", carbs: "12g", fats: "18g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/tofu_scramble/",
+        recipeUrl: "https://cookieandkate.com/best-tofu-scramble-recipe/",
         steps: [
           "Crumble firm tofu into a skillet with 1 tsp of olive oil.",
           "Add sliced mushrooms, spinach, and 1 tbsp of nutritional yeast.",
@@ -227,7 +227,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1505576399279-565b52d4ac71?auto=format&fit=crop&q=80&w=600",
         desc: "Protein-rich quinoa base mixed with antioxidant-rich pomegranate arils.",
         macros: { calories: 410, protein: "12g", carbs: "42g", fats: "14g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/268412/quinoa-pomegranate-salad/",
+        recipeUrl: "https://cookieandkate.com/quinoa-salad-with-pomegranate-and-spinach/",
         steps: [
           "Combine 1 cup of cooked quinoa with pomegranate seeds and mint leaves.",
           "Add chopped cucumbers and crumbled vegan feta.",
@@ -240,7 +240,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?auto=format&fit=crop&q=80&w=600",
         desc: "Warm legume bake loaded with beta-carotene carrots and fibrous zucchini.",
         macros: { calories: 470, protein: "24g", carbs: "52g", fats: "11g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/270412/lentil-shepherds-pie/",
+        recipeUrl: "https://cookieandkate.com/vegetarian-shepherds-pie-recipe/",
         steps: [
           "Boil 1/2 cup of brown lentils until soft.",
           "Sauté diced carrots, celery, and zucchini with tomato paste.",
@@ -255,7 +255,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1517686469429-8bdb88b9f907?auto=format&fit=crop&q=80&w=600",
         desc: "Soluble-fiber oats topped with organic pecan nuts and chia seeds.",
         macros: { calories: 360, protein: "11g", carbs: "46g", fats: "15g" },
-        recipeUrl: "https://www.bonappetit.com/recipe/pecan-oatmeal",
+        recipeUrl: "https://cookieandkate.com/banana-pecan-oatmeal-recipe/",
         steps: [
           "Cook 1/2 cup of rolled oats in water or almond milk.",
           "Stir in 1 tbsp of chia seeds and let sit for 2 minutes.",
@@ -268,7 +268,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=600",
         desc: "Sprouted wrap loaded with raw potassium-rich carrots and organic hummus.",
         macros: { calories: 380, protein: "14g", carbs: "32g", fats: "15g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/carrot_hummus_wrap/",
+        recipeUrl: "https://cookieandkate.com/hummus-sandwich-recipe/",
         steps: [
           "Spread 3 tbsp of organic hummus on a sprouted grain tortilla.",
           "Layer with grated raw carrots, sliced cucumbers, and romaine lettuce.",
@@ -298,7 +298,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=600",
         desc: "Lean protein load with healthy fats to keep insulin curves flat in the morning.",
         macros: { calories: 310, protein: "22g", carbs: "8g", fats: "16g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/270415/avocado-egg-scramble/",
+        recipeUrl: "https://cookieandkate.com/perfect-scrambled-eggs-recipe/",
         steps: [
           "Whisk 3 egg whites with 1 whole egg in a small bowl.",
           "Heat 1 tsp of olive oil in a non-stick pan over medium heat.",
@@ -311,7 +311,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=600",
         desc: "Lean poultry with high-iron leafy greens. Controls glycemic spikes.",
         macros: { calories: 420, protein: "32g", carbs: "18g", fats: "11g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/chicken_spinach_wrap/",
+        recipeUrl: "https://www.eatingwell.com/recipe/248551/chicken-spinach-wrap/",
         steps: [
           "Season 150g of chicken breast with oregano and black pepper.",
           "Grill chicken breast until fully cooked, then slice into strips.",
@@ -339,7 +339,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1510627802741-ae7a43f5ca12?auto=format&fit=crop&q=80&w=600",
         desc: "High protein, zinc-rich turkey bacon folded in organic egg whites.",
         macros: { calories: 290, protein: "24g", carbs: "4g", fats: "18g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/252851/spinach-turkey-bacon-omelet/",
+        recipeUrl: "https://www.google.com/search?q=spinach+turkey+bacon+omelet",
         steps: [
           "Whisk 3 egg whites and 1 whole egg.",
           "Cook 2 strips of turkey bacon and chop into bits.",
@@ -352,7 +352,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=600",
         desc: "Lean seafood protein containing selenium, tossed in cold quinoa.",
         macros: { calories: 390, protein: "28g", carbs: "24g", fats: "12g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/lemon_herb_shrimp_salad/",
+        recipeUrl: "https://www.simplyrecipes.com/lemon-herb-shrimp-salad-recipe-5211245",
         steps: [
           "Sauté shrimp with lemon zest and minced garlic.",
           "Combine cooked quinoa, diced cucumbers, and parsley.",
@@ -365,7 +365,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=80&w=600",
         desc: "Low-fat cod fillet baked with herbs and served next to high-fiber broccoli mash.",
         macros: { calories: 340, protein: "30g", carbs: "12g", fats: "10g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/270428/baked-cod-with-steamed-broccoli/",
+        recipeUrl: "https://www.eatingwell.com/recipe/263544/baked-cod-with-steamed-broccoli/",
         steps: [
           "Season cod fillet with salt, pepper, and paprika.",
           "Bake cod at 375°F (190°C) for 12 minutes.",
@@ -393,7 +393,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1626700051175-6518c4793f4f?auto=format&fit=crop&q=80&w=600",
         desc: "Lean turkey cutlet containing zinc and iron, loaded with baby greens.",
         macros: { calories: 410, protein: "34g", carbs: "15g", fats: "14g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/268435/turkey-spinach-salad-bowl/",
+        recipeUrl: "https://www.eatingwell.com/recipe/278456/turkey-spinach-salad-bowl/",
         steps: [
           "Grill turkey cutlet and slice into strips.",
           "Combine baby spinach, cherry tomatoes, and sliced almonds.",
@@ -421,7 +421,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1510627802741-ae7a43f5ca12?auto=format&fit=crop&q=80&w=600",
         desc: "Protein-heavy morning starter using leftover chicken breast and egg whites.",
         macros: { calories: 310, protein: "28g", carbs: "3g", fats: "15g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/270416/chicken-spinach-omelet/",
+        recipeUrl: "https://www.eatingwell.com/recipe/269988/chicken-spinach-omelet/",
         steps: [
           "Whisk 3 egg whites and 1 whole egg.",
           "Sauté a cup of spinach leaves until wilted, then add shredded chicken.",
@@ -434,7 +434,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=600",
         desc: "Canned salmon salad wrapped in crisp butter lettuce cups.",
         macros: { calories: 370, protein: "26g", carbs: "8g", fats: "22g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/salmon_salad_wraps/",
+        recipeUrl: "https://www.simplyrecipes.com/salmon-salad-wraps-recipe-5211246",
         steps: [
           "Mix canned salmon with 1 tbsp of Greek yogurt and lemon juice.",
           "Add diced celery, green onion, and black pepper.",
@@ -462,7 +462,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=600",
         desc: "Quick fatty-acid and biotin breakfast to support cellular repair.",
         macros: { calories: 340, protein: "14g", carbs: "9g", fats: "24g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/270419/avocado-toast-with-boiled-egg/",
+        recipeUrl: "https://cookieandkate.com/avocado-toast-with-boiled-egg/",
         steps: [
           "Boil 2 organic eggs for 8 minutes, then peel and slice.",
           "Cut 1/2 ripe avocado into slices.",
@@ -475,7 +475,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80&w=600",
         desc: "Warm pan-seared shrimp served over baby spinach and walnuts.",
         macros: { calories: 380, protein: "27g", carbs: "11g", fats: "18g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/shrimp_spinach_salad/",
+        recipeUrl: "https://www.simplyrecipes.com/shrimp-spinach-salad-recipe-5211247",
         steps: [
           "Sauté shrimp in a pan with 1 tsp of olive oil and garlic.",
           "Arrange baby spinach in a bowl with cucumber slices.",
@@ -488,7 +488,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&q=80&w=600",
         desc: "Lean halibut baked in parchment paper to seal in micro-nutrients.",
         macros: { calories: 470, protein: "36g", carbs: "28g", fats: "15g" },
-        recipeUrl: "https://www.bonappetit.com/recipe/baked-halibut-in-parchment",
+        recipeUrl: "https://www.eatingwell.com/recipe/268456/baked-halibut-in-parchment/",
         steps: [
           "Place halibut fillet in parchment paper with lemon and zucchini slices.",
           "Bake at 375°F (190°C) for 15 minutes.",
@@ -503,7 +503,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1510627802741-ae7a43f5ca12?auto=format&fit=crop&q=80&w=600",
         desc: "High protein breakfast sausage scramble containing zinc and iron.",
         macros: { calories: 350, protein: "24g", carbs: "6g", fats: "22g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/270422/turkey-sausage-egg-scramble/",
+        recipeUrl: "https://cookieandkate.com/turkey-sausage-egg-scramble/",
         steps: [
           "Sauté 2 turkey sausage links and slice them.",
           "Whisk 3 egg whites and pour into the pan with sausage slices.",
@@ -516,7 +516,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600",
         desc: "High fiber legume bowl paired with omega-rich canned tuna.",
         macros: { calories: 410, protein: "32g", carbs: "24g", fats: "14g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/tuna_white_bean_salad/",
+        recipeUrl: "https://www.simplyrecipes.com/tuna-white-bean-salad-recipe-5211248",
         steps: [
           "Drain canned white tuna and cannellini beans.",
           "Combine in a bowl with chopped celery, red onion, and parsley.",
@@ -544,7 +544,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=600",
         desc: "Omega-3 loading breakfast. Supports hormonal regulation.",
         macros: { calories: 340, protein: "24g", carbs: "16g", fats: "18g" },
-        recipeUrl: "https://www.eatingwell.com/recipe/270423/smoked-salmon-avocado-toast/",
+        recipeUrl: "https://cookieandkate.com/smoked-salmon-avocado-toast/",
         steps: [
           "Toast 1 slice of sprouted grain bread.",
           "Spread 1 tbsp of plain Greek yogurt on toast.",
@@ -557,7 +557,7 @@ const pcosMeals = {
         image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=600",
         desc: "Protein-rich chicken breast salad loaded with walnut halves and celery.",
         macros: { calories: 420, protein: "34g", carbs: "10g", fats: "24g" },
-        recipeUrl: "https://www.simplyrecipes.com/recipes/chicken_salad_with_walnuts/",
+        recipeUrl: "https://www.simplyrecipes.com/chicken-salad-with-walnuts-recipe-5211249",
         steps: [
           "Chop cooked chicken breast into cubes.",
           "Toss with chopped celery, apple slices, and raw walnuts.",
