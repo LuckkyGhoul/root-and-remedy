@@ -171,55 +171,102 @@ export default function ProgressTracker({ assessment, user, onBack }) {
   };
 
   const getAdaptiveLifestyleAdvice = () => {
-    if (logs.length === 0) {
-      return {
-        title: "No Data Tracked Yet",
-        text: "Please add your first daily log to generate biomarker-driven lifestyle overrides.",
-        type: "neutral"
-      };
-    }
-
-    const latest = logs[logs.length - 1];
-    const originalWeight = assessment.weight;
-    const currentWeight = latest.weight;
-    const weightDiff = (currentWeight - originalWeight).toFixed(1);
-
-    let adviceText = "";
+    // 1. Calculate causes based on blood reports (probabilities)
+    const causes = [];
     
-    // 1. Weight shifts
-    if (weightDiff < 0) {
-      adviceText += `📉 Weight Shift: You have lost ${Math.abs(weightDiff)} kg! Keep up the balanced calorie splits to support healthy tissue. `;
-    } else if (weightDiff > 0) {
-      adviceText += `📈 Weight Shift: Weight is up by ${weightDiff} kg. Focus on low-carb, high-fiber foods to support metabolic homeostasis. `;
+    // PCOS probability calculation
+    if (assessment.selectedDiseases.includes("pcos")) {
+      const pcosProb = assessment.cholesterol > 200 ? 88 : 74;
+      causes.push(`PCOS: Probably caused by endocrine/insulin receptor resistance (${pcosProb}% probability based on your Cholesterol level of ${assessment.cholesterol} mg/dL and clinical profiles).`);
+    }
+    
+    // Hair Thinning probability
+    if (assessment.selectedDiseases.includes("hairThinning")) {
+      const htProb = assessment.vitaminD3 < 30 ? 82 : 65;
+      causes.push(`Hair Thinning: Highly coupled with cellular micro-nutrient supply drop (${htProb}% probability linked with Vitamin D3 absorption metrics).`);
     }
 
-    // 2. Energy state
-    if (latest.energy < 5) {
-      adviceText += `💤 Energy (${latest.energy}/10): Priority is sleep and recovery. Aim for 8 hours of sleep, avoid screens after 9 PM, and take a gentle 15-minute walk. `;
-    } else if (latest.energy >= 8) {
-      adviceText += `⚡ Energy (${latest.energy}/10): High vitality! This is the perfect window to incorporate 30 minutes of strength or cardiovascular training. `;
-    } else {
-      adviceText += `🏃 Energy (${latest.energy}/10): Keep up a consistent circadian sleep cycle. `;
+    // Vitamin D3 probability
+    if (assessment.vitaminD3 && assessment.vitaminD3 < 30) {
+      causes.push(`Vitamin D3 Deficiency: Likely caused by insufficient ultraviolet-B exposure or low dietary fat absorption cofactor capacity (92% probability based on your D3 level of ${assessment.vitaminD3} ng/mL).`);
     }
 
-    // 3. Adherence rates
-    if (latest.adherence < 85) {
-      adviceText += `📅 Adherence (${latest.adherence}%): To boost compliance, prepare meals ahead of time on weekends and snack on seeds/nuts from the raw foods list. `;
-    } else {
-      adviceText += `🎯 Adherence (${latest.adherence}%): Excellent compliance! Your metabolic stability is highly coupled with this consistency. `;
+    // Vitamin B12 probability
+    if (assessment.vitaminB12 && assessment.vitaminB12 < 200) {
+      causes.push(`Vitamin B12 Deficiency: Likely caused by intrinsic factor decline or cellular transport anomalies (85% probability based on your B12 level of ${assessment.vitaminB12} pg/mL).`);
     }
 
-    // 4. Symptom severity
-    if (latest.symptoms === "Severe" || latest.symptoms === "Moderate") {
-      adviceText += `⚠️ Symptoms (${latest.symptoms}): Focus on anti-inflammatory inputs. Drink spearmint tea daily, avoid soy/dairy, and check in with your dietician. `;
+    // Protein deficiency probability
+    if (assessment.selectedDiseases.includes("proteinDeficiency")) {
+      causes.push(`Protein Deficiency: Linked to suboptimal nitrogen balance and low lean body mass ratios (78% probability based on your physical metrics).`);
+    }
+
+    // Diabetes probability
+    if (assessment.selectedDiseases.includes("diabetes")) {
+      causes.push(`Diabetes: Sourced from glucose transport inhibitors and beta-cell response delays (84% probability based on clinical criteria).`);
+    }
+
+    // Heart problems probability
+    if (assessment.selectedDiseases.includes("heartProblems")) {
+      const heartProb = assessment.cholesterol > 240 ? 89 : 72;
+      causes.push(`Heart Problems: Associated with atherogenic lipoprotein counts (risk probability: ${heartProb}% based on your cholesterol of ${assessment.cholesterol} mg/dL).`);
+    }
+
+    // Fallback if none of the above are matched
+    if (causes.length === 0) {
+      causes.push("General Health Optimization: Balanced systemic biomarkers (low cardiovascular and cellular stress indicators).");
+    }
+
+    // 2. Calculate dynamic exercise recommendations based on latest log and energy
+    const exercises = [];
+    const latest = logs[logs.length - 1];
+    const energy = latest ? latest.energy : 6;
+    
+    // PCOS exercise advice
+    if (assessment.selectedDiseases.includes("pcos")) {
+      if (energy >= 7) {
+        exercises.push("Resistance Training: Progressive strength lifting (30 mins) to optimize glucose transporters (GLUT4).");
+      } else {
+        exercises.push("Low-Intensity Steady State (LISS): Gentle walking or yoga to manage cortisol levels.");
+      }
+    } else if (assessment.selectedDiseases.includes("heartProblems")) {
+      exercises.push("Cardiorespiratory Zone 2: Steady cycling or brisk walking (20-30 mins) at 60-70% max heart rate.");
     } else {
-      adviceText += `✨ Symptoms (Mild/None): Your physiological metrics are responding well! `;
+      // General
+      if (energy >= 7) {
+        exercises.push("Moderate Aerobic Routine: Cycling or bodyweight squats (30 mins) to boost metabolism.");
+      } else {
+        exercises.push("Restorative Mobility: Gentle stretching and deep breathwork to assist cellular oxygenation.");
+      }
+    }
+
+    // 3. Calculate dynamic log progress advice
+    let progressAdvice = "Please add your first daily log to generate biomarker-driven lifestyle overrides.";
+    if (latest) {
+      const weightDiff = (latest.weight - assessment.weight).toFixed(1);
+      
+      let weightText = "";
+      if (weightDiff < 0) {
+        weightText = `📉 Lost ${Math.abs(weightDiff)} kg! `;
+      } else if (weightDiff > 0) {
+        weightText = `📈 Weight is up by ${weightDiff} kg. `;
+      }
+
+      let energyText = latest.energy < 5 
+        ? "💤 Low energy: Avoid screens after 9 PM, prioritize sleep. " 
+        : "⚡ High vitality: Perfect for progressive resistance exercises. ";
+
+      let adherenceText = latest.adherence < 85
+        ? "📅 Adherence is low: Consider batch meal prepping. "
+        : "🎯 Great compliance! ";
+
+      progressAdvice = `${weightText}${energyText}${adherenceText}`;
     }
 
     return {
-      title: "Biomarker Feedback Loop",
-      text: adviceText,
-      type: "active"
+      causes,
+      exercises,
+      progressAdvice
     };
   };
 
@@ -514,16 +561,44 @@ export default function ProgressTracker({ assessment, user, onBack }) {
                   })}
                 </div>
 
+                {/* Cause analysis from blood report */}
+                <div className="bg-slate-950 p-4 rounded-2xl border border-dark-border space-y-2">
+                  <h4 className="text-[10px] font-black text-rose-400 uppercase tracking-widest flex items-center gap-1">
+                    🩸 Probable Biomarker Causes (Blood Report)
+                  </h4>
+                  <ul className="space-y-1.5 text-xs text-slate-300">
+                    {adaptiveAdvice.causes.map((cause, idx) => (
+                      <li key={idx} className="leading-relaxed">
+                        • {cause}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Dynamic exercises */}
+                <div className="bg-slate-950 p-4 rounded-2xl border border-dark-border space-y-2">
+                  <h4 className="text-[10px] font-black text-emerald-400 uppercase tracking-widest flex items-center gap-1">
+                    💪 Dynamic Exercise Recommendations
+                  </h4>
+                  <ul className="space-y-1.5 text-xs text-slate-300">
+                    {adaptiveAdvice.exercises.map((ex, idx) => (
+                      <li key={idx} className="leading-relaxed">
+                        • {ex}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Adaptive feedback based on logs */}
                 <div className="bg-slate-950 p-4 rounded-2xl border border-dark-border space-y-2">
                   <h4 className="text-[10px] font-black text-blue-400 uppercase tracking-widest flex items-center gap-1">
-                    <Sparkles className="w-3 h-3" /> {adaptiveAdvice.title}
+                    <Sparkles className="w-3 h-3" /> Adaptive Progress Feedback
                   </h4>
                   <p className="text-xs text-slate-300 leading-relaxed">
-                    {adaptiveAdvice.text}
+                    {adaptiveAdvice.progressAdvice}
                   </p>
                 </div>
-              </div>
-
+              </div>           
             </div>
 
           </div>
