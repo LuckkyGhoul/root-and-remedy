@@ -7,9 +7,13 @@ import {
   CheckCircle, 
   Loader2, 
   ArrowLeft, 
-  Award
+  Award,
+  Sparkles,
+  Heart,
+  Activity
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { diseaseDiets } from '../data/dietData';
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
 
@@ -165,6 +169,61 @@ export default function ProgressTracker({ assessment, user, onBack }) {
       });
     }
   };
+
+  const getAdaptiveLifestyleAdvice = () => {
+    if (logs.length === 0) {
+      return {
+        title: "No Data Tracked Yet",
+        text: "Please add your first daily log to generate biomarker-driven lifestyle overrides.",
+        type: "neutral"
+      };
+    }
+
+    const latest = logs[logs.length - 1];
+    const originalWeight = assessment.weight;
+    const currentWeight = latest.weight;
+    const weightDiff = (currentWeight - originalWeight).toFixed(1);
+
+    let adviceText = "";
+    
+    // 1. Weight shifts
+    if (weightDiff < 0) {
+      adviceText += `📉 Weight Shift: You have lost ${Math.abs(weightDiff)} kg! Keep up the balanced calorie splits to support healthy tissue. `;
+    } else if (weightDiff > 0) {
+      adviceText += `📈 Weight Shift: Weight is up by ${weightDiff} kg. Focus on low-carb, high-fiber foods to support metabolic homeostasis. `;
+    }
+
+    // 2. Energy state
+    if (latest.energy < 5) {
+      adviceText += `💤 Energy (${latest.energy}/10): Priority is sleep and recovery. Aim for 8 hours of sleep, avoid screens after 9 PM, and take a gentle 15-minute walk. `;
+    } else if (latest.energy >= 8) {
+      adviceText += `⚡ Energy (${latest.energy}/10): High vitality! This is the perfect window to incorporate 30 minutes of strength or cardiovascular training. `;
+    } else {
+      adviceText += `🏃 Energy (${latest.energy}/10): Keep up a consistent circadian sleep cycle. `;
+    }
+
+    // 3. Adherence rates
+    if (latest.adherence < 85) {
+      adviceText += `📅 Adherence (${latest.adherence}%): To boost compliance, prepare meals ahead of time on weekends and snack on seeds/nuts from the raw foods list. `;
+    } else {
+      adviceText += `🎯 Adherence (${latest.adherence}%): Excellent compliance! Your metabolic stability is highly coupled with this consistency. `;
+    }
+
+    // 4. Symptom severity
+    if (latest.symptoms === "Severe" || latest.symptoms === "Moderate") {
+      adviceText += `⚠️ Symptoms (${latest.symptoms}): Focus on anti-inflammatory inputs. Drink spearmint tea daily, avoid soy/dairy, and check in with your dietician. `;
+    } else {
+      adviceText += `✨ Symptoms (Mild/None): Your physiological metrics are responding well! `;
+    }
+
+    return {
+      title: "Biomarker Feedback Loop",
+      text: adviceText,
+      type: "active"
+    };
+  };
+
+  const adaptiveAdvice = getAdaptiveLifestyleAdvice();
 
   // Basic SVG plotting calculations
   const chartLogs = logs.length > 0 ? logs : [{ date: "Day 1", weight: assessment.weight }];
@@ -428,6 +487,41 @@ export default function ProgressTracker({ assessment, user, onBack }) {
                   </div>
                 )}
 
+              </div>
+
+              {/* Disease & Adaptive Lifestyle Guidelines */}
+              <div className="bg-dark-card border border-dark-border rounded-3xl p-6 shadow-xl space-y-6 text-left">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-700/40 flex items-center justify-center text-emerald-400">
+                    <Activity className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-extrabold uppercase tracking-wider text-slate-300">My Clinical Profile & Overrides</h3>
+                    <p className="text-[10px] text-slate-500 font-semibold">Real-time lifestyle adaptation</p>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {assessment.selectedDiseases.map((diseaseId, idx) => {
+                    const profile = diseaseDiets[diseaseId];
+                    if (!profile) return null;
+                    return (
+                      <div key={idx} className="border-b border-dark-border/40 pb-3 last:border-b-0 space-y-1">
+                        <h4 className="text-xs font-bold text-slate-200">{profile.name}</h4>
+                        <p className="text-[11px] text-slate-400 leading-relaxed">{profile.description}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div className="bg-slate-950 p-4 rounded-2xl border border-dark-border space-y-2">
+                  <h4 className="text-[10px] font-black text-blue-400 uppercase tracking-widest flex items-center gap-1">
+                    <Sparkles className="w-3 h-3" /> {adaptiveAdvice.title}
+                  </h4>
+                  <p className="text-xs text-slate-300 leading-relaxed">
+                    {adaptiveAdvice.text}
+                  </p>
+                </div>
               </div>
 
             </div>
