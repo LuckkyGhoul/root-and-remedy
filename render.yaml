@@ -11,7 +11,7 @@ services:
   # 2. Spring Boot Java Backend
   - type: web
     name: nutri-diet-backend
-    env: image
+    env: docker
     rootDir: backend
     # Since Render supports Docker, using a simple multi-stage Docker build is 100% reliable for Spring Boot JDK 21+
     # We will write a lightweight Dockerfile in the backend folder to guarantee it builds successfully on Render!
