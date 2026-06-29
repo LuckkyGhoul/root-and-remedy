@@ -1,15 +1,24 @@
-import flask
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import numpy as np
 
 app = Flask(__name__)
 CORS(app)
 
+def calculate_slope(y):
+    n = len(y)
+    if n < 2:
+        return 0.0
+    x = list(range(n))
+    mean_x = sum(x) / n
+    mean_y = sum(y) / n
+    num = sum((x[i] - mean_x) * (y[i] - mean_y) for i in range(n))
+    den = sum((x[i] - mean_x) ** 2 for i in range(n))
+    return num / den if den != 0 else 0.0
+
 @app.route('/api/optimize', methods=['POST'])
 def optimize_diet():
     """
-    Exposes a dynamic diet adaptation optimization logic using Numpy metrics.
+    Exposes a dynamic diet adaptation optimization logic using pure Python.
     Expects payload:
     {
       "selectedDiseases": ["pcos", "d3"],
@@ -30,24 +39,21 @@ def optimize_diet():
     diseases = data.get("selectedDiseases", [])
     logs = data.get("logs", [])
     
-    # Calculate simple trends with NumPy
+    # Calculate simple trends with pure Python
     if len(logs) >= 2:
         weights = [float(log.get("weight", data.get("weight"))) for log in logs]
         energies = [int(log.get("energy", 5)) for log in logs]
         adherences = [int(log.get("adherence", 80)) for log in logs]
         
-        # Calculate regression slope for weight delta
-        x = np.arange(len(weights))
-        weight_slope = np.polyfit(x, weights, 1)[0]
-        avg_energy = np.mean(energies)
-        avg_adherence = np.mean(adherences)
+        weight_slope = calculate_slope(weights)
+        avg_energy = sum(energies) / len(energies)
+        avg_adherence = sum(adherences) / len(adherences)
     else:
         weight_slope = -0.1  # default target decline
         avg_energy = 7.0
         avg_adherence = 85.0
 
     # Optimization Logic:
-    # Based on clinical guidelines, if weight slope is stagnating or energy is low, modify lipids/carbs loading.
     fats_shift = 0.0
     protein_shift = 0.0
     carbs_shift = 0.0
@@ -56,7 +62,6 @@ def optimize_diet():
     # PCOS logic
     if "pcos" in diseases:
         if avg_energy >= 7.5:
-            # Shift lipids to support ovarian functions
             fats_shift = 15.0
             carbs_shift = -5.0
             recs.append("ML Model Optimization Directive: Based on your Day 3 positive energy progression, the model has increased low-GI fat loads (avocado/pumpkin seeds) by 15% to support follicular development. Standard carbs reduced by 5% to lock in insulin improvements.")
@@ -80,7 +85,7 @@ def optimize_diet():
             recs.append("ML Model Optimization Directive: Low adherence detected. Stabilizing macro metrics; prioritize hydration and lifestyle changes.")
 
     directive_msg = recs[0] if recs else "ML Model: Current diet is optimized. No shifts needed."
-    confidence = float(np.clip(85.0 + avg_adherence * 0.1, 80.0, 99.0))
+    confidence = max(80.0, min(99.0, 85.0 + avg_adherence * 0.1))
 
     return jsonify({
         "status": "success",
@@ -88,7 +93,7 @@ def optimize_diet():
             f"Python Flask server successfully evaluated {len(diseases)} disease paths.",
             f"Calculated average adherence: {avg_adherence:.1f}%. Avg energy level: {avg_energy:.1f}.",
             f"Weight progression slope detected: {weight_slope:.3f} kg/interval.",
-            f"Applied shifts: Protein: {protein_shift}%, Fats: {fats_shift}%, Carbs: {carbs_shift}%."
+            f"Applied shifts: Protein: {protein_shift}%, Fats: {fats_shift}%, Carbs: {carbs_shift}."
         ],
         "directive": directive_msg,
         "confidence": confidence,
