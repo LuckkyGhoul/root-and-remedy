@@ -35,9 +35,9 @@ export default function DietDashboard({ assessment, user, onGoToProgress, onRese
     return conflict.diseases.every(d => activeDiseases.includes(d));
   });
 
-  // Get active meal profile based on category and tab
+  // Get active meal profile based on category, day, and tab
   const getMealProfile = (mealType) => {
-    return primaryDiet.meals[isVeg ? 'veg' : 'nonVeg'][mealType];
+    return primaryDiet.meals[isVeg ? 'veg' : 'nonVeg'][selectedDay][mealType];
   };
 
   const currentMeal = getMealProfile(activeMealTab);
@@ -218,6 +218,18 @@ export default function DietDashboard({ assessment, user, onGoToProgress, onRese
                   </div>
                 </div>
 
+                {/* Follow This Recipe Hyperlink */}
+                {currentMeal.recipeUrl && (
+                  <a 
+                    href={currentMeal.recipeUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-blue-400 font-bold hover:underline text-xs block select-none"
+                  >
+                    follow this recipe &rarr;
+                  </a>
+                )}
+
                 {/* Rating and Reviews */}
                 <div className="flex items-center gap-2 text-xs text-slate-400">
                   <div className="flex items-center text-blue-500 text-xs">
@@ -338,6 +350,41 @@ export default function DietDashboard({ assessment, user, onGoToProgress, onRese
             >
               🥩 Non-Vegetarian Diet
             </button>
+          </div>
+        </div>
+
+        {/* DOUBLE COLUMN: Foods to Eat (Raw) & Foods to Avoid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          {/* Foods to Eat (Raw) */}
+          <div className="bg-[#1b2f27] border border-emerald-900/40 p-5 rounded-2xl text-left space-y-3">
+            <h4 className="text-[11px] font-black uppercase tracking-wider text-emerald-400 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Foods to Eat (Raw)
+            </h4>
+            <ul className="grid grid-cols-2 gap-2 text-xs text-slate-300">
+              {primaryDiet.rawFoods.map((food, idx) => (
+                <li key={idx} className="flex items-center gap-2">
+                  <span className="text-emerald-500 font-bold select-none">✓</span>
+                  <span>{food}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Foods to Avoid */}
+          <div className="bg-[#311f23] border border-rose-900/40 p-5 rounded-2xl text-left space-y-3">
+            <h4 className="text-[11px] font-black uppercase tracking-wider text-rose-400 flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
+              Foods to Avoid (Raw & Cooked)
+            </h4>
+            <ul className="grid grid-cols-2 gap-2 text-xs text-slate-300">
+              {primaryDiet.avoidFoods.map((food, idx) => (
+                <li key={idx} className="flex items-center gap-2">
+                  <span className="text-rose-500 font-bold select-none">✗</span>
+                  <span>{food}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
